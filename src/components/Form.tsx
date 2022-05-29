@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-const Form = ({ addTodo }: any) => {
+interface Props {
+  addTodo: (text: string) => Promise<void>;
+}
+
+const Form = ({ addTodo }: Props) => {
   const [text, setText] = useState('');
   return (
     <form

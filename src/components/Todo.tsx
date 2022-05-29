@@ -1,7 +1,13 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { BiCopy } from 'react-icons/bi';
 
-const Todo = ({ todo, deleteTodo, setCompleted }: any) => {
+interface Props {
+  todo: any;
+  deleteTodo: (id: string) => Promise<void>;
+  setCompleted: (id: string, completed: boolean) => Promise<void>;
+}
+
+const Todo = ({ todo, deleteTodo, setCompleted }: Props) => {
   return (
     <div className='flex mb-4 items-center'>
       <p className={`w-full text-grey-darkest ${todo.fields.completed ? 'line-through' : ''}`}>{todo.fields.text}</p>
