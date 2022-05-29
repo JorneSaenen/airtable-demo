@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Form = ({ addTodo }) => {
+const Form = ({ addTodo }: any) => {
   const [text, setText] = useState('');
   return (
     <form

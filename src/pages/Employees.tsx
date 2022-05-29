@@ -1,5 +1,5 @@
 import { employees } from '../utils/airtable';
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { AiOutlineHome } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ function Employees() {
   const [job, setJob] = useState('Lesgever');
   const [loading, setLoading] = useState(false);
 
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [bla, setBla] = useState([]);
 
   const getData = async () => {
@@ -33,13 +33,13 @@ function Employees() {
     setLoading(false);
   };
 
-  const deleteRecord = async (id) => {
+  const deleteRecord = async (id: string) => {
     await employees.destroy(id);
     setData(data.filter((record) => record.id !== id));
     getData();
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const newEmployee = { firstName: first, lastName: last, status: stat, jobTitle: job };
     const createdRecord = await employees.create(newEmployee);

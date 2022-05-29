@@ -1,7 +1,7 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { BiCopy } from 'react-icons/bi';
 
-const Todo = ({ todo, deleteTodo, setCompleted }) => {
+const Todo = ({ todo, deleteTodo, setCompleted }: any) => {
   return (
     <div className='flex mb-4 items-center'>
       <p className={`w-full text-grey-darkest ${todo.fields.completed ? 'line-through' : ''}`}>{todo.fields.text}</p>

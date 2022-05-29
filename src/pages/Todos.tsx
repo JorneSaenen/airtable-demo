@@ -14,6 +14,8 @@ const Todos = () => {
     setTodosState(
       records.map((record) => {
         if (!record.fields.completed) {
+          // TODO: add types
+          // @ts-ignore
           record = { ...record, fields: { ...record.fields, completed: false } };
         }
         return { id: record.id, fields: record.fields };
@@ -21,7 +23,7 @@ const Todos = () => {
     );
   };
 
-  const addTodo = async (text) => {
+  const addTodo = async (text: string) => {
     const record = await todos.create([
       {
         fields: {
@@ -35,13 +37,13 @@ const Todos = () => {
     getTodos();
   };
 
-  const deleteTodo = async (id) => {
+  const deleteTodo = async (id: string) => {
     await todos.destroy(id);
     setTodosState(todosState.filter((todo) => todo.id !== id));
     getTodos();
   };
 
-  const setCompleted = async (id, completed) => {
+  const setCompleted = async (id: string, completed: boolean) => {
     await todos.update(id, { completed: !completed });
     setTodosState(todosState.map((todo) => (todo.id === id ? { ...todo, fields: { ...todo.fields, completed: !completed } } : todo)));
     getTodos();
